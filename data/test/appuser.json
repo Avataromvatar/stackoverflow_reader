@@ -1,0 +1,6 @@
+{
+    "privileges_acces": {"tag_view": true, "question_view": true, "webview": false },
+    "name":"GoodHuman",
+    "currentPath":"/",
+    "favorite_tags":["android","flutter","dart"]
+}

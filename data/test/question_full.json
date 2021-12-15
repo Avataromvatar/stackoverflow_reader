@@ -1,0 +1,24 @@
+{
+    "tags": [
+        "android"
+    ],
+    "owner": {
+        "account_id": 23609626,
+        "reputation": 1,
+        "user_id": 17644836,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/a-/AOh14GhSrD_jSBUzL3Ix6NIziW_cZ-xAWaQLxF6WvZpm=k-s256",
+        "display_name": "Kunal Jha",
+        "link": "https://stackoverflow.com/users/17644836/kunal-jha"
+    },
+    "is_answered": false,
+    "view_count": 7,
+    "answer_count": 0,
+    "score": -1,
+    "last_activity_date": 1639140864,
+    "creation_date": 1639140864,
+    "question_id": 70304830,
+    "content_license": "CC BY-SA 4.0",
+    "link": "https://stackoverflow.com/questions/70304830/users-can-t-select-these-options-together-ex-1-property-type-land-number",
+    "title": "Users can’t select these options together. Ex. 1 : Property Type : Land, Number of Rooms: 1 to 3 rooms"
+}
