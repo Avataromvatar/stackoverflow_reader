@@ -1,11 +1,15 @@
 import 'package:flutter/widgets.dart';
+import 'package:stackoverflow_reader/layer/app_layer.dart';
 import 'package:tastypie/tastypie.dart';
 
-class ViewLayer extends InheritedWidget with Colony {
+class ViewLayer extends InheritedWidget with TastyPieLayer {
   ViewLayer({
     Key? key,
     required Widget child,
-  }) : super(key: key, child: child) {}
+  }) : super(key: key, child: child) {
+    connect(AppLayer());
+    AppLayer().connect(this);
+  }
 
   static ViewLayer of(BuildContext context) {
     final ViewLayer? result =

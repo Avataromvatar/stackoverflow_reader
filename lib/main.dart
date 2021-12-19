@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:stackoverflow_reader/layer/app_layer.dart';
+import 'package:stackoverflow_reader/layer/service_layer.dart';
+import 'package:stackoverflow_reader/layer/view_layer.dart';
+import 'package:stackoverflow_reader/model/model_tag.dart';
+import 'package:stackoverflow_reader/page/question_page.dart';
+import 'package:stackoverflow_reader/page/tag_page.dart';
 import 'package:stackoverflow_reader/widget/taglist_logic.dart';
 
 void main() {
+  var service = ServiceLayer();
+  var app = AppLayer();
+  app.connect(service);
+  service.connect(app);
   runApp(const MyApp());
 }
 
@@ -14,6 +24,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stackoverflow Reader',
       theme: ThemeData.dark(),
+      // initialRoute:'/',
+      // routes: {
+      //   '/':
+      // },
       home: const MyHomePage(title: 'Stackoverflow Reader'),
     );
   }
@@ -46,17 +60,35 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Tags :)',
-            ),
-            TagListLogic(),
-          ],
-        ),
-      ),
+      body: ViewLayer(
+          // child: LayoutBuilder(
+          //   builder: (BuildContext context, BoxConstraints constraits) {
+          // return
+          child: Navigator(
+        initialRoute: '/',
+        onGenerateRoute: (RouteSettings settings) {
+          WidgetBuilder builder;
+          switch (settings.name) {
+            case '/':
+              builder = (context) => PageTag();
+              break;
+            case '/questions':
+              builder = (context) => PageQuestions(
+                    tag: settings.arguments as AppModelTag,
+                  );
+              break;
+            default:
+              builder = (context) => PageTag();
+          }
+
+          return MaterialPageRoute<void>(builder: builder, settings: settings);
+        },
+      )
+          // );
+          // },
+          ),
+
+      // ),
     );
   }
 }

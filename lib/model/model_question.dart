@@ -27,8 +27,7 @@
 
 import 'dart:convert';
 
-class AppModelQuestion
-{
+class AppModelQuestion {
   bool isTrue = false;
 
   String title = '';
@@ -36,36 +35,53 @@ class AppModelQuestion
   int raw_date = -1;
   String date = '';
   String author = '';
-  int id=-1;
+  int answer_count = -1;
+  int score = -1;
+  int view_count = -1;
+  int id = -1;
   AppModelQuestion();
-  AppModelQuestion.fromJson(String json)
-  {
-   var map = jsonDecode(json);
+  AppModelQuestion.fromMap(Map<String, dynamic> map) {
+    _loadfromMap(map);
+  }
+  AppModelQuestion.fromJson(String json) {
+    var map = jsonDecode(json);
     if (map is Map<String, dynamic>) {
-      if (map.containsKey('owner') &&
-          map.containsKey('title') &&
-          map.containsKey('creation_date')
-          && map.containsKey('question_id')
-        ) {
-          try { 
-             if(map['owner'] is Map<String, dynamic>)
-             {
-               if(map['owner'].containsKey('display_name'))
-               {
-                  title = map['title'];
-                  author = map['owner']['display_name'];
-                  raw_date = map['creation_date'];
-                  date = DateTime.fromMillisecondsSinceEpoch(raw_date*1000).toIso8601String();
-                  id = map['question_id'];
-                  isTrue = true;
-               }
-             }
-          } catch (e) {
-            isTrue = false;
-            print('ERROR: Create AppModelQuestion from $json\n$e');
-          }  
-           
+      _loadfromMap(map);
+    }
+  }
+
+  void _loadfromMap(Map<String, dynamic> map) {
+    if (map.containsKey('owner') &&
+        map.containsKey('title') &&
+        map.containsKey('creation_date') &&
+        map.containsKey('question_id')) {
+      try {
+        if (map['owner'] is Map<String, dynamic>) {
+          if (map['owner'].containsKey('display_name')) {
+            title = map['title'];
+            author = map['owner']['display_name'];
+            raw_date = map['creation_date'];
+            date = DateTime.fromMillisecondsSinceEpoch(raw_date * 1000)
+                .toIso8601String();
+            id = map['question_id'];
+
+            if (map.containsKey('answer_count')) {
+              answer_count = map['answer_count'];
+            }
+            if (map.containsKey('score')) {
+              score = map['score'];
+            }
+            if (map.containsKey('view_count')) {
+              view_count = map['view_count'];
+            }
+
+            isTrue = true;
           }
+        }
+      } catch (e) {
+        isTrue = false;
+        print('ERROR: Create AppModelQuestion from $json\n$e');
+      }
     }
   }
 }
