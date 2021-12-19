@@ -11,28 +11,32 @@ class PageQuestions extends StatelessWidget {
         super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          // _tag != null
-          //     ? TagWidget(_tag!, () {
-          //         Navigator.of(context).pushNamed('/');
-          //       })
-          //     : Text(''),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Questions${_tag != null ? '/${_tag!.name}' : ''}'),
+        ),
+        // floatingActionButton: FloatingActionButton.small(
+        //   child: Icon(Icons.keyboard_return),
+        //   onPressed: () {
+        //     Navigator.of(context).pushNamed('/');
+        //   },
+        // ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // _tag != null
+              //     ? TagWidget(_tag!, () {
+              //         Navigator.of(context).pushNamed('/');
+              //       })
+              //     : Text(''),
 
-          FloatingActionButton.small(
-            child: Icon(Icons.keyboard_return),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/');
-            },
+              Flexible(
+                  child: QuestionsListLogic(
+                tag: _tag,
+              )),
+            ],
           ),
-          Flexible(
-              child: QuestionsListLogic(
-            tag: _tag,
-          )),
-        ],
-      ),
-    );
+        ));
   }
 }

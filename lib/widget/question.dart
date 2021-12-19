@@ -8,7 +8,7 @@ class QuestionWidget extends StatelessWidget {
   QuestionWidget(this.question, this.onTap, {Key? key}) : super(key: key);
 
   void _onTap(BuildContext context) {
-    Navigator.of(context).pushNamed('/', arguments: question);
+    // Navigator.of(context).pushNamed('/', arguments: question);
     onTap();
   }
 

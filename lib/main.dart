@@ -56,39 +56,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ViewLayer(
-          // child: LayoutBuilder(
-          //   builder: (BuildContext context, BoxConstraints constraits) {
-          // return
-          child: Navigator(
-        initialRoute: '/',
-        onGenerateRoute: (RouteSettings settings) {
-          WidgetBuilder builder;
-          switch (settings.name) {
-            case '/':
-              builder = (context) => PageTag();
-              break;
-            case '/questions':
-              builder = (context) => PageQuestions(
-                    tag: settings.arguments as AppModelTag,
-                  );
-              break;
-            default:
-              builder = (context) => PageTag();
-          }
+    return ViewLayer(
+        // child: LayoutBuilder(
+        //   builder: (BuildContext context, BoxConstraints constraits) {
+        // return
+        child: Navigator(
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        WidgetBuilder builder;
+        switch (settings.name) {
+          case '/':
+            builder = (context) => PageTag();
+            break;
+          case '/questions':
+            builder = (context) => PageQuestions(
+                  tag: settings.arguments as AppModelTag,
+                );
+            break;
+          default:
+            builder = (context) => PageTag();
+        }
 
-          return MaterialPageRoute<void>(builder: builder, settings: settings);
-        },
-      )
-          // );
-          // },
-          ),
-
-      // ),
-    );
+        return MaterialPageRoute<void>(builder: builder, settings: settings);
+      },
+    ));
   }
 }
