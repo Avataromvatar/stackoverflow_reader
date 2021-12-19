@@ -60,7 +60,7 @@ class AppQuestionsService with Topping {
       _list.addAll(tmp);
       currentPage++;
       // send(TasteDTO('updateQuestionList', tmp));
-      send(TasteDTO('fullRefreshTags', _list));
+      send(TasteDTO('fullRefreshQuestions', _list));
     } catch (e) {
       print('Error AppQuestionsService $e');
       send(TasteDTO('error', 'Error AppQuestionsService $e'));

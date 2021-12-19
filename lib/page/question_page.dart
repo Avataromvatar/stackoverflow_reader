@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stackoverflow_reader/model/model_tag.dart';
+import 'package:stackoverflow_reader/widget/error_msg.dart';
 import 'package:stackoverflow_reader/widget/questionslist.dart';
 import 'package:stackoverflow_reader/widget/tag.dart';
 
@@ -30,7 +31,7 @@ class PageQuestions extends StatelessWidget {
               //         Navigator.of(context).pushNamed('/');
               //       })
               //     : Text(''),
-
+              ErrorMsgWidget(),
               Flexible(
                   child: QuestionsListLogic(
                 tag: _tag,

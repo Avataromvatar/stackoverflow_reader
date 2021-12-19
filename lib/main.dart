@@ -12,16 +12,17 @@ void main() {
   var app = AppLayer();
   app.connect(service);
   service.connect(app);
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  // final _messangerKey = GlobalKey<ScaffoldMessengerState>();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // scaffoldMessengerKey: _messangerKey,
       title: 'Stackoverflow Reader',
       theme: ThemeData.dark(),
       // initialRoute:'/',

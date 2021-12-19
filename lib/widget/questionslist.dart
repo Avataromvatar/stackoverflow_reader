@@ -40,7 +40,7 @@ class _QuestionsListLogicState extends State<QuestionsListLogic> with Topping {
               print('Question onTop ${element.title}');
             }));
           });
-        } else if (topic == 'fullRefreshTags') {
+        } else if (topic == 'fullRefreshQuestions') {
           widget._quistions.clear();
           widget._quistions.addAll(
               (data as List<AppModelQuestion>).map((e) => QuestionWidget(e, () {

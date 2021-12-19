@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stackoverflow_reader/widget/error_msg.dart';
 import 'package:stackoverflow_reader/widget/taglist_logic.dart';
 
 class PageTag extends StatelessWidget {
@@ -17,6 +18,7 @@ class PageTag extends StatelessWidget {
               // const Text(
               //   'Tags :)',
               // ),
+              ErrorMsgWidget(),
               Flexible(child: TagListLogic()),
             ],
           ),

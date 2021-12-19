@@ -11,7 +11,7 @@ class AppDataMapper with Topping {
     addInputTaste('getResponse', _getResponseQuestion,
         stateMask: 2, onlyInTheLayer: false); //from service
     addOutputTaste('checkListAppTag');
-    addOutputTaste('updateQuestionList', onlyInTheLayer: false);
+    addOutputTaste('listAppQuestion', onlyInTheLayer: false);
     addOutputTaste('error', onlyInTheLayer: false);
   }
 
@@ -50,7 +50,7 @@ class AppDataMapper with Topping {
 
         ret.add(t);
       });
-      send(TasteDTO('updateQuestionList', ret));
+      send(TasteDTO('listAppQuestion', ret));
     } catch (e) {
       print('Error AppDataMapper $e');
       send(TasteDTO('error', 'Error AppDataMapper $e'));

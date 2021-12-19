@@ -45,6 +45,7 @@ class _TagListLogicState extends State<TagListLogic> with Topping {
           (data as List<AppModelTag>).forEach((element) {
             widget._tags.add(TagWidget(element, () {
               send(TasteDTO('openQuestion', element));
+              // send(TasteDTO('error', 'Blablablaa'));
             }));
           });
         } else if (topic == 'fullRefreshTags') {
@@ -52,6 +53,7 @@ class _TagListLogicState extends State<TagListLogic> with Topping {
           widget._tags
               .addAll((data as List<AppModelTag>).map((e) => TagWidget(e, () {
                     send(TasteDTO('openQuestion', e));
+                    // send(TasteDTO('error', 'Blablablaa'));
                   })));
         }
       });
